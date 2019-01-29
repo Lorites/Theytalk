@@ -1,0 +1,54 @@
+<button class="design des box fixed index top rit" (click)="open=true" title="Home">
+    <i class="fa fa-home"></i>
+</button>
+<div *ngIf="open" class="page fixed index top bottom lef rit black" (click)="open=false">
+</div>
+<div *ngIf="open" class="fixed index bottom" (click)="open=false">
+    <button class="box design des" routerLink="/home/people" title="People">
+        <i class="fa fa-users"></i>
+    </button>
+    <button class="box design des" title="Parties" routerLink="/home/parties">
+        <i class="fa fa-envelope-open-text"></i>            
+    </button>
+    <button class="box design des" title="Forum" routerLink="/home/forum">
+        <i class="fa fa-mail-bulk"></i>            
+    </button>
+    <button class="box design des" title="Profile" routerLink="/home/profile">
+        <i class="fa fa-user-tie"></i>            
+    </button>
+    <button class="box design des" title="Wall" routerLink="/home/wall">
+        <i class="fa fa-user-secret"></i>            
+    </button>
+    <button class="box design des" title="Gallery" routerLink="/home/gallery">
+        <i class="fa fa-user-clock"></i>            
+    </button>
+    <button class="box design des" title="Following people' inbox" routerLink="/home/followingPeopleInbox">
+        <i class="fa fa-user-shield"></i>            
+    </button>
+    <button class="box design des" routerLink="/home/inbox" title="Inbox">
+        <i class="fa fa-inbox"></i>            
+    </button>
+    <button class="box design des" title="Following parties' inbox" routerLink="/home/followingPartiesInbox">
+        <i class="fa fa-envelope"></i>            
+    </button>
+    <button class="box design des" title="Following people' status" routerLink="/home/followingPeopleStatus">
+        <i class="fa fa-tv"></i>            
+    </button>
+    <button class="box design des" routerLink="/home/friends" title="Friends">
+        <i class="fa fa-user-friends"></i>        
+    </button>
+    <button class="box design des" title="Channels" routerLink="/home/channels">
+        <i class="fa fa-warehouse"></i>            
+    </button>
+    <button class="box design des" title="Display picture" routerLink="/home/displayPicture">
+        <i class="fa fa-portrait"></i>            
+    </button>
+    <button class="box design des" routerLink="/home/settings" title="Settings">
+        <i class="fa fa-user-edit"></i>
+    </button>
+    <button class="box design des" title="Logout" (click)="sign()">
+        <i class="fa fa-sign-out-alt"></i>           
+    </button>
+</div>
+
+<router-outlet></router-outlet>

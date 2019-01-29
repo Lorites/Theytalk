@@ -1,0 +1,74 @@
+<div class="posi fixed top lef rit">
+  <i class="fa fa-user-friends it green" title="Friends"></i>
+  <a class="bold" (click)="open=true">{{namee}}</a>
+</div>
+<div *ngIf="open" class="page fixed index bottom top lef rit black" (click)="g()">
+</div>
+<div *ngIf="open" class="fixed index bottom" (click)="g()">
+    <a href="/home/chat/{{friendId}}/{{name}}#bottom" class="design left bo dess download" title="Chat">
+        <i class="fa fa-comment gree do"></i>            
+    </a>
+    <button class="box design des" title="Forum" routerLink="/home/forum/{{friendId}}/{{name}}">
+        <i class="fa fa-mail-bulk"></i>            
+    </button>
+    <button class="box design des" title="Profile" routerLink="/home/profile/{{friendId}}/{{name}}">
+        <i class="fa fa-user-tie"></i>            
+    </button>
+    <button class="box design des" title="Wall" routerLink="/home/wall/{{friendId}}/{{name}}">
+        <i class="fa fa-user-secret"></i>            
+    </button>
+    <button class="box design des" title="Following parties' inbox" routerLink="/home/followingPartiesInbox/{{friendId}}/{{name}}">
+        <i class="fa fa-envelope"></i>            
+    </button>
+    <button class="box design des" title="Following people' status" routerLink="/home/followingPeopleStatus/{{friendId}}/{{name}}">
+        <i class="fa fa-tv"></i>            
+    </button>
+    <button class="box design des" routerLink="/home/friends/{{friendId}}/{{name}}" title="Friends">
+        <i class="fa fa-user-friends"></i>        
+    </button>
+    <button class="box design des" title="Channels" routerLink="/home/channels/{{friendId}}/{{name}}">
+        <i class="fa fa-warehouse"></i>            
+    </button>
+    <button class="box design des" title="Display picture" routerLink="/home/displayPicture/{{friendId}}/{{name}}">
+        <i class="fa fa-portrait"></i>            
+    </button>
+    <button [disabled]="!userId" class="box design des" title="Follow" (click)="add()" >
+        <i class="fa fa-user-plus"></i>            
+    </button>
+    <button [disabled]="!userId" class="box design des" title="Unfollow" (click)="remove()">
+        <i class="fa fa-user-minus"></i>            
+    </button>
+    <button [disabled]="!userId" class="design box des" title="Clear chat" (click)="clear()">
+        <i class="fa fa-trash-alt"></i>
+    </button>
+</div>
+<div class="pos fixed bottom lef">
+  <input  class="inpu full black write" [(ngModel)]="searchTerm">
+</div>
+<div class="fixed full fix">
+    <button title="Following" [class.design]="!thi"  [class.white]="thi" (click)="that=false; thi=true;" class="des half">
+        <i class="fa fa-user-check"></i>
+    </button>
+    <button title="Followers" [class.white]="that" [class.design]="!that" (click)="thi=false; that=true" class="des half">
+        <i class="fa fa-user-times"></i>
+    </button>
+    </div>
+  <div class="spas space" *ngIf="that">
+  <div *ngFor="let fffriend of fffriends | async | reverse">
+    <div *ngFor="let user of users | async | filter:searchTerm" [class.me]="user.userId === userId">
+      <div class="spac write writ" *ngIf="user.userId === fffriend.userId">
+    <a href="/home/chat/{{user.userId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="spas space" *ngIf="thi">
+    <div *ngFor="let ffriend of ffriends | async | reverse">
+    <div *ngFor="let user of users | async | filter:searchTerm" [class.me]="message.userId === userId">
+      <div class="spac write writ" *ngIf="user.userId === ffriend.userId">
+    <a href="/home/chat/{{user.userId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>
+    </div>
+  </div>
+  </div>
+</div>
+

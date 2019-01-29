@@ -1,0 +1,37 @@
+<div class="posi fixed top lef rit">
+  <i class="fa fa-warehouse it green" title="Channels"></i>
+</div>
+<div class="pos fixed bottom lef">
+  <input  class="inpu full black write" [(ngModel)]="searchTerm">
+</div>
+<div class="fixed full fix">
+    <button title="Following" [class.design]="!thi"  [class.white]="thi" (click)="that=false; thi=true;" class="des half">
+        <i class="fa fa-user-check"></i>
+    </button>
+    <button title="Followers" [class.white]="that" [class.design]="!that" (click)="thi=false; that=true" class="des half">
+        <i class="fa fa-user-times"></i>
+    </button>
+    </div>
+  <div class="spas space" *ngIf="that">
+  <div *ngFor="let fffriend of fffriends | async | reverse">
+      <div *ngFor="let user of users | async | filter:searchTerm">
+      <div class="spac write writ" *ngIf="user.channelId === fffriend.userId">
+    <a href="/home/partyChat/{{user.channelId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>
+    <div class="right it">{{user.time | date:"EEEE, MMMM d, y 'at' h:mm a"}}</div>
+    <div class="clear"></div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="spas space" *ngIf="thi">
+  <div *ngFor="let ffriend of ffriends | async | reverse">
+      <div *ngFor="let user of users | async | filter:searchTerm">
+      <div class="spac write writ" *ngIf="user.channelId === ffriend.userId">
+    <a href="/home/partyChat/{{user.channelId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>
+    <div class="right it">{{user.time | date:"EEEE, MMMM d, y 'at' h:mm a"}}</div>
+    <div class="clear"></div>            
+    </div>
+  </div>
+  </div>
+</div>
+

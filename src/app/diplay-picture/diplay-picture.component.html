@@ -1,0 +1,22 @@
+<div class="posi fixed top lef rit">
+  <i class="fa fa-portrait it green" title="Display picture"></i>
+</div>
+<div class="sp">
+    <div class="write">
+        {{ name }}
+        <br>
+  <a [href]="url" *ngIf="url" download class="design left bo dess download" title="Download file">
+    <i class="fa fa-download gree do"></i>
+  </a>
+  <div class="clear"></div>
+  </div>
+<img *ngIf="ext === 'jpg' || ext === 'png' || ext === 'gif'" [src]="url">    
+  <video *ngIf="ext === 'mp4'" controls>
+    <source [src]="url" type="video/mp4">
+</video>
+<audio *ngIf="ext === 'mp3'" controls>
+    <source [src]="url" type="audio/mp3">
+</audio>
+<i *ngIf="ext && ext !== 'mp3' && ext !== 'mp4' && ext !== 'jpg' && ext !== 'png' && ext !== 'gif'" class="fa fa-5x fa-file"></i>
+
+</div>

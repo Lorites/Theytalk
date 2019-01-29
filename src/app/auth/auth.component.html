@@ -1,0 +1,40 @@
+<img src="favicon.ico" class="all" alt="Theytalk">
+  <span class="topic bold"> Theytalk</span>
+<form (submit)="login(email.value, password.value)">
+  <div class="d">
+  <input type="email" title="email@example.com" placeholder="Email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" 
+  required class="full inpu gap black write" ngModel name="email" #email="ngModel">
+  <a (click)="show()" class="left design bo dess download">
+      <i class="fa fa-eye gree do"></i>
+    </a>
+  <div class="doo">
+  <input minlength="6" title="Must contain at least six characters" required id="password" type="password" placeholder="Password" class="full inpu gap black write" ngModel name="password" #password="ngModel">
+  </div>
+  <div class="clear"></div>
+  <input required type="text" title='Can not contain any of the following characters: \ / [ ] "'  pattern="[^/\][\\\x22]+" placeholder="Username" class="full inpu gap black write" ngModel name="name" #name="ngModel">  
+</div>
+<button type="submit" [disabled]="email.invalid || password.invalid" class="full submit des gap">Login
+  <i class="fa fa-sign-in-alt"></i>
+</button>
+</form>
+<button (click)="signup(email.value, password.value, name.value)" [disabled]="email.invalid || password.invalid || name.invalid" class="full submit des gap">Create account
+  <i class="fa fa-edit"></i>
+</button>
+<button (click)="forget(email.value)" [disabled]="email.invalid" class="full submit des">Reset password
+  <i class="fa fa-key"></i>
+</button>
+<h1>Login using:</h1>
+<button (click)="google()" class="full design des gap">Google  
+  <i class="fab fa-google"></i>
+</button>
+<button (click)="facebook()" class="full design des gap">Facebook
+  <i class="fab fa-facebook"></i>
+</button>
+<button (click)="twitter()" class="full design des gap">Twitter
+  <i class="fab fa-twitter"></i>
+</button>
+<button (click)="github()" class="full design des">GitHub
+  <i class="fab fa-github"></i>
+</button>
+
+

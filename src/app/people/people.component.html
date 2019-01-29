@@ -1,0 +1,12 @@
+<div class="posi fixed top lef rit">
+  <i class="fa fa-users it green" title="People"></i>
+</div>
+<div class="pos fixed bottom lef">
+  <input  class="inpu full black write" [(ngModel)]="searchTerm">
+</div>
+
+<div class="spa space">
+<div *ngFor="let user of users | async | filter:searchTerm" class="spac write writ" [class.me]="user.userId === userId">
+  <a href="/home/chat/{{user.userId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>
+</div> 
+</div>

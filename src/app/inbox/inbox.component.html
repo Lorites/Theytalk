@@ -1,0 +1,32 @@
+<div class="posi fixed top lef rit">
+  <i class="fa fa-inbox it green" title="Inbox"></i>
+</div>
+<div class="spa space">
+<div class="spac writ" *ngFor="let message of messages | async | reverse | filter:searchTerm" [class.me]="message.userId === userId">
+<div class="write">
+  <a href="/home/chat/{{message.userId}}/{{message.name}}#bottom" class="bold">{{message.name}}</a>
+<br>
+{{message.text}}
+<div class="right it">{{message.time | date:"EEEE, MMMM d, y 'at' h:mm a"}}</div>
+<div class="clear"></div>
+<button class="design box des" title="Delete message" (click)="delete(message.userId,message.name)">
+  <i class="fa fa-trash"></i>
+</button>
+<a [href]="message.url" *ngIf="message.ext" download class="design left bo dess download" title="Download file">
+  <i class="fa fa-download gree do"></i>
+</a>
+<div class="clear"></div>
+</div>
+<img *ngIf="message.ext === 'jpg' || message.ext === 'png' || message.ext === 'gif'" [src]="message.url">    
+<video *ngIf="message.ext === 'mp4'" controls>
+  <source [src]="message.url" type="video/mp4">
+</video>
+<audio *ngIf="message.ext === 'mp3'" controls>
+  <source [src]="message.url" type="audio/mp3">
+</audio>
+<i *ngIf="message.ext && message.ext !== 'mp3' && message.ext !== 'mp4' && message.ext !== 'jpg' && message.ext !== 'png' && message.ext !== 'gif'" class="fa fa-5x fa-file"></i>
+</div>
+</div>
+<div class="pos fixed bottom lef">
+  <input [(ngModel)]="searchTerm" class="inpu full black write">
+  </div>

@@ -1,0 +1,33 @@
+<div class="posi fixed top lef rit">
+    <i class="fa fa-user-friends it green" title="Friends"></i>
+  </div>
+  <div class="pos fixed bottom lef">
+    <input  class="inpu full black write" [(ngModel)]="searchTerm">
+  </div>
+  <div class="fixed full fix">
+      <button title="Following" [class.design]="!thi"  [class.white]="thi" (click)="that=false; thi=true;" class="des half">
+          <i class="fa fa-user-check"></i>
+      </button>
+      <button title="Followers" [class.white]="that" [class.design]="!that" (click)="thi=false; that=true" class="des half">
+          <i class="fa fa-user-times"></i>
+      </button>
+      </div>
+    <div class="spas space" *ngIf="that">
+    <div *ngFor="let fffriend of fffriends  | async | reverse">
+      <div *ngFor="let user of users | async | filter:searchTerm" [class.me]="user.userId === userId">
+        <div class="spac write writ" *ngIf="user.userId === fffriend.userId">
+      <a href="/home/chat/{{user.userId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>      
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="spas space" *ngIf="thi">
+      <div *ngFor="let ffriend of ffriends | async | reverse">
+      <div *ngFor="let user of users | async | filter:searchTerm" [class.me]="user.userId === userId">
+        <div class="spac write writ" *ngIf="user.userId === ffriend.userId">
+      <a href="/home/chat/{{user.userId}}/{{user.name}}#bottom" class="bold">{{user.name}}</a>
+      </div>
+    </div>
+    </div>
+  </div>
+

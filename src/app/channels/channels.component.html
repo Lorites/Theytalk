@@ -1,0 +1,13 @@
+<div class="posi fixed top lef rit">
+    <i class="fa fa-envelope-open-text it green" title="Parties"></i>
+</div>
+<div class="pos fixed bottom lef">
+  <input autofocus class="inpu full black write" [(ngModel)]="searchTerm">
+</div>
+<div class="spa space">
+<div class="spac write writ" *ngFor="let channel of channels | async | reverse | filter:searchTerm">
+  <a href="/home/partyChat/{{channel.channelId}}/{{channel.name}}#bottom" class="bold">{{channel.name}}</a>
+  <div class="right it">{{channel.time | date:"EEEE, MMMM d, y 'at' h:mm a"}}</div>
+<div class="clear"></div>
+</div> 
+</div>

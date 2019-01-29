@@ -1,0 +1,45 @@
+<div class="posi fixed top lef rit">
+    <i class="fa fa-mail-bulk it green" title="Forum"></i>
+  </div>
+  <div class="spacc space">
+  <div class="spac writ" *ngFor="let message of messages | async | reverse | filter:tex" [class.me]="message.channelId === id">
+    <div class="write">
+    <a href="/home/partyChat/{{message.channelId}}/{{message.name}}#bottom" class="bold">{{message.name}}</a>
+    <div class="right it">{{message.time| date:"EEEE, MMMM d, y 'at' h:mm a"}}</div>
+    <div class="clear"></div>
+    <button class="box design des" title="Wall" routerLink="/home/editPartyWall/{{message.channelId}}/{{message.name}}">
+      <i class="fa fa-user-secret"></i>            
+    </button>
+    <button class="box design des" routerLink="/home/editFanPage/{{message.channelId}}/{{message.name}}" title="Fan page">
+      <i class="fa fa-user-circle"></i>        
+    </button>
+    <button class="box des design" title="Edit party" (click)="edit(message.channelId,message.name)">
+        <i class="fa fa-user-cog"></i>
+    </button>
+    <button *ngIf="message.show" (click)="hide(message.channelId)" class="box design des" title="Private party">
+        <i class="fa fa-user-lock"></i>
+    </button>
+    <button *ngIf="!message.show" (click)="show(message.channelId)" class="box design des" title="Public party">
+      <i class="fa fa-user"></i>
+  </button>
+  <button class="design box des" title="Clear party chat" (click)="clear(message.channelId,message.name)">
+      <i class="fa fa-trash-alt"></i>
+  </button>
+  <button class="design box des" title="Delete party" (click)="delete(message.channelId,message.name)">
+    <i class="fa fa-trash"></i>
+  </button>
+    </div>
+  </div> 
+  </div>
+    <form class="down fixed bottom lef rit">
+      <div class="d">
+    <textarea title='Can not contain any of the following characters: \ / [ ] "' required id="te" placeholder="{{name}}" [(ngModel)]="tex" name="text" #text="ngModel" pattern="[^/\][\\\x22]+"></textarea>
+    </div>
+  <button  *ngIf="id" class="full des submit" (click)="set(tex)" [disabled]="text.invalid || !userId" title="Update party">
+    <i class="fa fa-cog"></i>
+  </button>
+    <button *ngIf="!id" (click)="send(tex)" [disabled]="text.invalid || !userId" class="full submit des" title="Create party">
+        <i class="fa fa-reply"></i>    
+    </button>
+    </form>
+  
