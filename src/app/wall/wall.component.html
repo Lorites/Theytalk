@@ -1,0 +1,40 @@
+<div class="posi fixed top lef rit">
+  <i class="fa fa-user-secret it green" title="Wall"></i>
+</div>
+<div class="spa space">
+<div class="spac writ" *ngFor="let message of messages | async | reverse | filter:searchTerm">
+<div class="write">
+{{message.name}}
+<div class="right it">{{message.time | date:"EEEE, MMMM d, y 'at' h:mm a"}}</div>
+<div class="clear"></div>
+<button class="design box des" title="Use as display picture" (click)="dp(message.name,message.ext,message.url)">
+  <i class="fa fa-id-card"></i>
+</button>
+<button class="design box des" title="Delete file" (click)="delete(message.id,message.name, message.url)">
+  <i class="fa fa-trash"></i>
+</button>
+<a [href]="message.url" download class="design left bo dess download" title="Download file">
+  <i class="fa fa-download gree do"></i>
+</a>
+<div class="clear"></div>
+</div>
+<img *ngIf="message.ext === 'jpg' || message.ext === 'png' || message.ext === 'gif'" [src]="message.url">    
+<video *ngIf="message.ext === 'mp4'" controls>
+  <source [src]="message.url" type="video/mp4">
+</video>
+<audio *ngIf="message.ext === 'mp3'" controls>
+  <source [src]="message.url" type="audio/mp3">
+</audio>
+<i *ngIf="message.ext && message.ext !== 'mp3' && message.ext !== 'mp4' && message.ext !== 'jpg' && message.ext !== 'png' && message.ext !== 'gif'" class="fa fa-5x fa-file"></i>
+
+</div>
+</div>
+<div class="down fixed bottom lef rit">
+    <label *ngIf="userId" class="file design dess bo" title="Upload file">
+        <input type="file" class="no" (change)="upload($event)">
+        <i class="fa fa-upload gree"></i>
+        </label>
+<div class="doo d">
+  <input [(ngModel)]="searchTerm"  class="inpu full black write">
+  </div>
+</div>
